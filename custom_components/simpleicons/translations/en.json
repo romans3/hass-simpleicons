@@ -2,7 +2,7 @@
   "title": "Simple Icons",
   "config": {
     "abort": {
-      "single_instance_allowed": "Only a single configuration of simpleicons is allowed."
+      "single_instance_allowed": "Only one Simple Icons configuration is allowed."
     },
     "step": {}
   }
