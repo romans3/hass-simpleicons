@@ -92,7 +92,6 @@ def register_modules(hass):
         hass.data[DATA_EXTRA_MODULE_URL] = set()
     url_set = hass.data[DATA_EXTRA_MODULE_URL]
 
-    for k, v in ICON_FILES.items():
-        url_set.remove(ICONS_URL + v)
-        # if k in modules and modules[k] != False:
+    for _, v in ICON_FILES.items():
+        url_set.discard(ICONS_URL + v)
         url_set.add(ICONS_URL + v)
