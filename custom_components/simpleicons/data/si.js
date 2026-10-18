@@ -1,33 +1,48 @@
-let icons = {};
+const icons = {};
 
 async function getIcon(name) {
-    let si = undefined;
+    try {
+        if (icons[name]) {
+            return {
+                path: icons[name].path,
+                viewBox: "-1 -1 26 26",
+            };
+        }
 
-    if (icons[name] !== undefined) {
-        si = icons[name];
-    } else {
         const response = await fetch(`/simpleicons/icons/${name}`);
 
-        if (!response.ok) return {};
-        si = await response.json();
-        icons[name] = si;
-    }
+        if (!response.ok) {
+            return {};
+        }
 
-    return {
-        path: si.path,
-        viewBox: "-1 -1 26 26",
-    };
+        const si = await response.json();
+
+        icons[name] = si;
+
+        return {
+            path: si.path,
+            viewBox: "-1 -1 26 26",
+        };
+    } catch (err) {
+        console.error("Simple Icons:", err);
+        return {};
+    }
 }
 
 async function getIconList() {
-    const response = await fetch(`/simpleicons/icons`);
+    try {
+        const response = await fetch(`/simpleicons/icons`);
 
-    if (!response.ok) return [];
+        if (!response.ok) {
+            return [];
+        }
 
-    const icons = await response.json();
-
-    return icons;
+        return await response.json();
+    } catch (err) {
+        console.error("Simple Icons:", err);
+        return [];
+    }
 }
 
 window.customIcons = window.customIcons || {};
-window.customIcons["si"] = { getIcon, getIconList };
+window.customIcons.si = { getIcon, getIconList };
