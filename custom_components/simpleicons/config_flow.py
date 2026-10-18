@@ -6,10 +6,19 @@ _LOGGER = logging.getLogger(__name__)
 
 
 @config_entries.HANDLERS.register("simpleicons")
-class simpleiconsConfigFlow(config_entries.ConfigFlow):
+class SimpleIconsConfigFlow(
+    config_entries.ConfigFlow,
+    domain="simpleicons"
+):
+    VERSION = 1
+
     async def async_step_user(self, user_input=None):
-        if self._async_current_entries():
-            return self.async_abort(reason="single_instance_allowed")
-        return self.async_create_entry(title="", data={})
+        await self.async_set_unique_id("simpleicons")
+        self._abort_if_unique_id_configured()
+
+        return self.async_create_entry(
+            title="Simple Icons",
+            data={},
+        )
 
     async_step_import = async_step_user
