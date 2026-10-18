@@ -1,17 +1,17 @@
 {
-    "domain": "simpleicons",
-    "name": "Simple Icons",
-    "codeowners": [],
-    "config_flow": true,
-    "dependencies": [
-        "http",
-        "frontend"
-    ],
-    "documentation": "https://github.com/vigonotion/hass-simpleicons",
-    "iot_class": "local_polling",
-    "issue_tracker": "https://github.com/vigonotion/hass-simpleicons/issues",
-    "requirements": [
-        "simplepycons==1!15.3.0"
-    ],
-    "version": "0.0.0"
+  "domain": "simpleicons",
+  "name": "Simple Icons",
+  "version": "1.0.0",
+  "documentation": "https://github.com/romans3/hass-simpleicons",
+  "issue_tracker": "https://github.com/romans3/hass-simpleicons/issues",
+  "codeowners": ["@romans3"],
+  "config_flow": true,
+  "dependencies": [
+    "http",
+    "frontend"
+  ],
+  "requirements": [
+    "simplepycons==1!15.3.0"
+  ],
+  "iot_class": "local_push"
 }
